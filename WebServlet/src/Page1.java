@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.PrintStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -13,7 +14,8 @@ public class Page1 extends HttpServlet {
 		
 		System.out.println("Hello World!!");
 		ServletOutputStream sos = resp.getOutputStream();
-		sos.print("Hello World!!");
+		PrintStream ps = new PrintStream(sos, true);
+		ps.print("하이용");
 	}
 	
 	
