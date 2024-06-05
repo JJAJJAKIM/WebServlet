@@ -5,12 +5,13 @@
 <meta charset="UTF-8">
 <title>JSP 화면</title>
 <link rel="icon" href="<%=request.getContextPath()%>/www/img/logo.png" type="image/x-icon">
-<link href="<%=request.getContextPath()%>/www/lib/bootstrap@5.2.3/css/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="<%=request.getContextPath()%>/www/lib/bootstrap@5.2.3/css/bootstrap.min.css" rel="stylesheet"> --%>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-3">
 	<h1 class="text-center">데이터를 입력하세요</h1>
-	<form action="/WebServlet/Result" method="post"> <!-- form태그는 데이터를 전송하는 영역. action이 Java파일을 호출하는 부분 -->
+	<form action="/Result" method="post"> <!-- form태그는 데이터를 전송하는 영역. action이 Java파일을 호출하는 부분 -->
 		<div class="mb-3 mt-3">
 			<label for="cnt" class="form-label">회전수 :</label>
 			<input type="number" class="form-control" id="cnt" name="cnt" value="0"> <!-- name이 데이터와 관련된 키이다. id는 style과 관련된것 -->

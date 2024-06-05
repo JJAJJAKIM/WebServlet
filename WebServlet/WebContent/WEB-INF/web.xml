@@ -20,4 +20,14 @@
   	<url-pattern>/page1</url-pattern>
   </servlet-mapping>
   
+  <filter>
+  	<filter-name>ServletFilter</filter-name>
+  	<filter-class>ServletFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>ServletFilter</filter-name>
+  	<url-pattern>/*</url-pattern> <!-- url-patern에  /*을 사용하면 모든 url주소에 filter를 적용한다. -->
+  </filter-mapping>
+  
+  
 </web-app>
