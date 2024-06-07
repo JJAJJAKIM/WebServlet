@@ -19,7 +19,7 @@ public class ResultPage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int cnt = Integer.parseInt(request.getParameter("cnt"));
 		String txt = request.getParameter("txt");
-		System.out.println(cnt + " : "+ txt);
+//		System.out.println(cnt + " : "+ txt);
 		
 		request.setAttribute("cnt", cnt);
 		request.setAttribute("txt", txt);
@@ -28,6 +28,12 @@ public class ResultPage extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int cnt = Integer.parseInt(request.getParameter("cnt"));
+		String txt = request.getParameter("txt");
+		
+		request.setAttribute("cnt", cnt);
+		request.setAttribute("txt", txt);	
+		
 		Utils.print(request, response, page);
 	}
 

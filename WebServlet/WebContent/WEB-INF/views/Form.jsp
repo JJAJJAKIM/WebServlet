@@ -11,7 +11,7 @@
 <body>
 <div class="container mt-3">
 	<h1 class="text-center">데이터를 입력하세요</h1>
-	<form action="ResultPage" method="get">
+	<form action="ResultPage" method="post">
 		<div class="mb-3 mt-3">
 			<label for="cnt" class="form-label">회전수 :</label>
 			<input type="number" class="form-control" id="cnt" name="cnt" value="0">

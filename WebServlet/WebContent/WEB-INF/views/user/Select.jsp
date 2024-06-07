@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,7 +10,7 @@
 <body>
 	<div class="container mt-3">
 	  <h1 class="display-1 text-center">사용자 정보</h1>
-		<form>
+		<form action="" method ="get">
 		  <div class="mb-3 mt-3">
 		    <label for="name" class="form-label">이름:</label>
 		    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요." name="name" readonly="readonly">
@@ -39,13 +40,13 @@
 		</form>
 		<div class="d-flex">
 		  <div class="p-2 flex-fill d-grid">
-		  	<a href="Update.html" class="btn btn-primary">수정</a>
+		  	<a href="Update.jsp" class="btn btn-primary">수정</a>
 		  </div>
 		  <div class="p-2 flex-fill d-grid">
-				<a href="List.html" class="btn btn-primary">삭제</a>
+				<a href="List.jsp" class="btn btn-primary">삭제</a>
 		  </div>
 		  <div class="p-2 flex-fill d-grid">
-			<a href="List.html" class="btn btn-primary">취소</a>
+			<a href="List.jsp" class="btn btn-primary">취소</a>
 		  </div>
 		</div>
 	</div>

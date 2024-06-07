@@ -13,7 +13,7 @@
 	Object result = request.getAttribute("result");
 	int cnt = Integer.parseInt(request.getAttribute("cnt").toString()); // 정수형으로 데이터 받기.
 	String txt = request.getAttribute("txt").toString();
-	out.println(cnt + " : "+ txt);
+
 %>
 <div class="container mt-3">
 	<div class="d-grid gap-3">
