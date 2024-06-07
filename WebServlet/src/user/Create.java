@@ -15,7 +15,7 @@ public class Create extends HttpServlet {
 	private final String page = "user/Create.jsp";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 Utils.print(request, response, page);
+		Utils.print(request, response, page);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

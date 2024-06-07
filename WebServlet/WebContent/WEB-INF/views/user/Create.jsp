@@ -10,7 +10,7 @@
 <body>
 	<div class="container mt-3">
 	  <h1 class="display-1 text-center">사용자 등록</h1>
-		<form>
+		<form action="Select" method="post" >
 		  <div class="mb-3 mt-3">
 		    <label for="name" class="form-label">이름:</label>
 		    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요." name="name">
@@ -37,15 +37,17 @@
 				</div>
 			  </div>
 			</div>
-		</form>
 		<div class="d-flex">
-		  <div class="p-2 flex-fill d-grid">
-				<a href="Select" class="btn btn-primary">생성</a>
-		  </div>
-		  <div class="p-2 flex-fill d-grid">
+			<div class="p-2 flex-fill d-grid">
+				<!-- <a href="Select" class="btn btn-primary" type="submit">생성</a> -->
+				<input type="submit" class="btn btn-primary" value="생성">
+
+			</div>
+			<div class="p-2 flex-fill d-grid">
 				<a href="List" class="btn btn-primary">취소</a>
-		  </div>
-		</div>
+			</div>
+		 </div>
+		</form>
 	</div>
 </body>
 </html>

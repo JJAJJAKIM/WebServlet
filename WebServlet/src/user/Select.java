@@ -15,10 +15,31 @@ public class Select extends HttpServlet {
 	private final String page = "user/Select.jsp";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String pwd = request.getParameter("pwd");
+		int gender = Integer.parseInt(request.getParameter("gender"));
+		
+		request.setAttribute("name", name);
+		request.setAttribute("email", email);
+		request.setAttribute("pwd", pwd);
+		request.setAttribute("gender", gender);
+		
 		Utils.print(request, response, page);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String pwd = request.getParameter("pwd");
+		int gender = Integer.parseInt(request.getParameter("gender"));
+		
+		request.setAttribute("name", name);
+		request.setAttribute("email", email);
+		request.setAttribute("pwd", pwd);
+		request.setAttribute("gender", gender);
+		
 		Utils.print(request, response, page);
 	}
 
