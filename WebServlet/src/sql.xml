@@ -5,7 +5,7 @@
 <mapper namespace="sql">
 	
 	<select id="test" resultType="Integer">
-		select 1 as no 
+		select 1 as no
 	</select>
 	
 	
