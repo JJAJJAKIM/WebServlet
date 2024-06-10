@@ -16,6 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.servlet.Utils;
 
 import db.Connec;
+import db.DBTable;
 
 
 @WebServlet("/Insert")
@@ -54,16 +55,24 @@ public class Insert extends HttpServlet {
 	 * }
 	 ************************************************************************/
 	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String name = request.getParameter("name");
-		 String email = request.getParameter("email");
-		 String pwd = request.getParameter("pwd");
-		 String gender = request.getParameter("gender");
+		
+		 DBTable dto = new DBTable();
+		 
+		 dto.setName(request.getParameter("name"));
+		 dto.setEmail(request.getParameter("email"));
+		 dto.setPwd(request.getParameter("pwd"));
+		 dto.setGender(request.getParameter("gender"));
+		 
+//		 String name = request.getParameter("name");
+//		 String email = request.getParameter("email");
+//		 String pwd = request.getParameter("pwd");
+//		 String gender = request.getParameter("gender");
 		 
 		 Map<String, String> userMap = new HashMap<String, String>();
-		 userMap.put("name", name );
-		 userMap.put("email", email );
-		 userMap.put("pwd", pwd);
-		 userMap.put("gender", gender );
+		 userMap.put("name", dto.getName() );
+		 userMap.put("email", dto.getEmail() );
+		 userMap.put("pwd", dto.getPwd());
+		 userMap.put("gender", dto.getGender());
 		 
 		 SqlSession sql = Connec.getpool().openSession();
 		 int status = sql.insert("user.add", userMap);
