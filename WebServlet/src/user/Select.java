@@ -19,7 +19,7 @@ public class Select extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
-		int gender = Integer.parseInt(request.getParameter("gender"));
+		String gender = request.getParameter("gender");
 		
 		request.setAttribute("name", name);
 		request.setAttribute("email", email);

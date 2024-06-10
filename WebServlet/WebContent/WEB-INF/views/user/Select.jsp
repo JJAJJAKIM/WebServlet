@@ -12,7 +12,7 @@
 	String name = request.getAttribute("name").toString();
 	String email = request.getAttribute("email").toString();
 	String pwd = request.getAttribute("pwd").toString();
-	int gender = Integer.parseInt(request.getAttribute("gender").toString());
+	String gender = request.getAttribute("gender").toString();
 %>
 	<div class="container mt-3">
 	  <h1 class="display-1 text-center">사용자 정보</h1>
@@ -32,7 +32,7 @@
 			
 		  </div>
 			<div class="d-flex">
-		 	<% if(gender==1){ %> 	
+		 	<% if("1".equals(gender)){ %> 	
 			  <div class="p-2 flex-fill">
 			  	<div class="form-check">
 					<input type="radio" class="form-check-input" id="radio1" name="gender" value="1" checked>남성
