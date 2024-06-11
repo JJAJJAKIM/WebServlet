@@ -1,3 +1,4 @@
+<%@page import="db.DBTable"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,28 +10,26 @@
 </head>
 <body>
 <% 
-	String name = request.getAttribute("name").toString();
-	String email = request.getAttribute("email").toString();
-	String pwd = request.getAttribute("pwd").toString();
-	int gender = Integer.parseInt(request.getAttribute("gender").toString());
-%>
+	DBTable dto = (DBTable)request.getAttribute("user");
+	if(dto != null){
+%>	
 	<div class="container mt-3">
 	  <h1 class="display-1 text-center">사용자 수정</h1>
-		<form action="Select" method="post">
+		<form action="Update" method="post">
 		  <div class="mb-3 mt-3">
 		    <label for="name" class="form-label">이름:</label>
-		    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요." name="name" value="<%=name %>" readonly="readonly">
+		    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요." name="name" value="<%=dto.getName()%>" readonly="readonly">
 		  </div>
 		  <div class="mb-3 mt-3">
 		    <label for="email" class="form-label">이메일:</label>
-		    <input type="email" class="form-control" id="email" placeholder="이메일를 입력하세요." name="email" value="<%=email%>">
+		    <input type="email" class="form-control" id="email" placeholder="이메일를 입력하세요." name="email" value="<%=dto.getEmail()%>">
 		  </div>
 		  <div class="mb-3">
 		    <label for="pwd" class="form-label">비밀번호:</label>
-		    <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요." name="pwd" value="<%=pwd%>">
+		    <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요." name="pwd" value="<%=dto.getPwd()%>">
 		  </div>
 			<div class="d-flex">
-		 	<% if(gender==1){ %> 	
+		 	<% if("1".equals(dto.getGender())){ %> 	
 			  <div class="p-2 flex-fill">
 			  	<div class="form-check">
 					<input type="radio" class="form-check-input" id="radio1" name="gender" value="1" checked>남성

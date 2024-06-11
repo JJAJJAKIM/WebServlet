@@ -21,5 +21,8 @@
 		SELECT LAST_INSERT_ID() as no
 	</select>
 	
+	<update id="updateNo" parameterType="db.DBTable">
+		UPDATE user SET email=#{email}, pwd=#{pwd} WHERE no=#{no}
+	</update>
 
 </mapper>

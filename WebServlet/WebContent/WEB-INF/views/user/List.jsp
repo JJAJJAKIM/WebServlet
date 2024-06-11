@@ -33,8 +33,11 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	    <% for(int i = 0; i < list.size(); i++ ){ %>
-	      <tr class="cursor-pointer" onclick="location.href = 'Select?no=1'"><%-- +<%=list.get(i).getNo()%>+"'"> --%>
+	    <% for(int i = 0; i < list.size(); i++ ) {
+	    	String no = list.get(i).getNo();
+	    	%>
+
+	      <tr class="cursor-pointer" onclick="location.href ='Select?no=<%=no%>'"> 
 	        <td><%=list.get(i).getName() %></td>
 	        <td><%=list.get(i).getEmail() %></td>
 	        <td><%=list.get(i).getRegDate() %></td>

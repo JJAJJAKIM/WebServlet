@@ -27,23 +27,18 @@ public class Select extends HttpServlet {
 		String no = request.getParameter("no");
 		
 		SqlSession sql = Connec.getpool().openSession();
-		List<DBTable> list = sql.selectOne("user.readOne", no);
-		System.out.println(list);
-	 
-//	 Utils.print(request, response, page);
-	 
+		DBTable dto = sql.selectOne("user.readOne", no);
+		
+		request.setAttribute("user", dto);
+		
+	    Utils.print(request, response, page);
 	 }
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		SqlSession sql = Connec.getpool().openSession();
-		List<DBTable> list = sql.selectList("user.read");
-
-		request.setAttribute("list", list);
-
-		Utils.print(request, response, page);
+//		Utils.print(request, response, page);
 
 	}
 

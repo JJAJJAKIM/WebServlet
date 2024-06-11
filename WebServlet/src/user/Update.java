@@ -7,7 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.servlet.Utils;
+
+import db.Connec;
+import db.DBTable;
 
 
 @WebServlet("/Update")
@@ -17,31 +22,25 @@ public class Update extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String pwd = request.getParameter("pwd");
-		int gender = Integer.parseInt(request.getParameter("gender"));
+		String no = request.getParameter("no");
 		
-		request.setAttribute("name", name);
-		request.setAttribute("email", email);
-		request.setAttribute("pwd", pwd);
-		request.setAttribute("gender", gender);
+		SqlSession sql = Connec.getpool().openSession();
+		DBTable dto = sql.selectOne("user.readOne", no);
 		
+		request.setAttribute("user", dto);
+				
 		Utils.print(request, response, page);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String pwd = request.getParameter("pwd");
-		int gender = Integer.parseInt(request.getParameter("gender"));
+		String no = request.getParameter("no");
 		
-		request.setAttribute("name", name);
-		request.setAttribute("email", email);
-		request.setAttribute("pwd", pwd);
-		request.setAttribute("gender", gender);
+		SqlSession sql = Connec.getpool().openSession();
+		DBTable dto = sql.selectOne("user.readOne", no);
 		
+		request.setAttribute("user", dto);
+				
 		Utils.print(request, response, page);
 	}
 

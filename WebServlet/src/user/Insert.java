@@ -80,7 +80,7 @@ public class Insert extends HttpServlet {
 		 System.out.println("상태값 : "+ status );
 		 if (status == 1) {
 			 int no = sql.selectOne("user.getNo");
-			 System.out.println(no);
+			
 			 sql.commit();
 			 
 			 response.sendRedirect("Select?no="+no); // Get 방식 호출 : 생성된 사용자 번호 전달
