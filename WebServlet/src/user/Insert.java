@@ -21,8 +21,6 @@ import db.DBTable;
 
 @WebServlet("/Insert")
 public class Insert extends HttpServlet {
-
-	//private final String page = "user/Select.jsp";
 	
 	/* *************** 내가 작성한 부분 주석처리 *************************
 	 * protected void doPost(HttpServletRequest request, HttpServletResponse
@@ -56,6 +54,20 @@ public class Insert extends HttpServlet {
 	 ************************************************************************/
 	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		 /* HashMap을 사용해서 Mybatis로 insert
+		  * 
+		  * String name = request.getParameter("name");
+		  * String email = request.getParameter("email");
+		  * String pwd = request.getParameter("pwd");
+		  * String gender = request.getParameter("gender");
+		  * 
+		  * Map<String, String> userMap = new HashMap<String, String>();
+		  * userMap.put("name", dto.getName() );
+		  * userMap.put("email", dto.getEmail() );
+		  * userMap.put("pwd", dto.getPwd());
+		  * userMap.put("gender", dto.getGender());
+		  */
+		
 		 DBTable dto = new DBTable();
 		 
 		 dto.setName(request.getParameter("name"));
@@ -63,23 +75,20 @@ public class Insert extends HttpServlet {
 		 dto.setPwd(request.getParameter("pwd"));
 		 dto.setGender(request.getParameter("gender"));
 		 
-//		 String name = request.getParameter("name");
-//		 String email = request.getParameter("email");
-//		 String pwd = request.getParameter("pwd");
-//		 String gender = request.getParameter("gender");
-		 
-		 Map<String, String> userMap = new HashMap<String, String>();
-		 userMap.put("name", dto.getName() );
-		 userMap.put("email", dto.getEmail() );
-		 userMap.put("pwd", dto.getPwd());
-		 userMap.put("gender", dto.getGender());
-		 
 		 SqlSession sql = Connec.getpool().openSession();
-		 int status = sql.insert("user.add", userMap);
+		 int status = sql.insert("user.add", dto);
 		 System.out.println("상태값 : "+ status );
-		 sql.commit();
+		 if (status == 1) {
+			 int no = sql.selectOne("user.getNo");
+			 System.out.println(no);
+			 sql.commit();
+			 
+			 response.sendRedirect("Select?no="+no); // Get 방식 호출 : 생성된 사용자 번호 전달
+		 } else {
+			 sql.rollback();
+		 }
 		 
-//		 Utils.print(request, response, page);
+		 
 	  
 	  }
 }

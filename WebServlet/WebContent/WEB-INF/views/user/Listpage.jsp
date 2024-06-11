@@ -1,5 +1,3 @@
-<%@page import="db.DBTable"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,12 +11,6 @@
 </style>
 </head>
 <body>
-
-<% 
-	List<DBTable> list = (List<DBTable>)request.getAttribute("list");
-	
-%>
-
 	<div class="container mt-3">
 	  <h1 class="display-1 text-center">사용자 목록</h1>
 	  <div class="btn-group">
@@ -33,13 +25,16 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	    <% for(int i = 0; i < list.size(); i++ ){ %>
-	      <tr class="cursor-pointer" onclick="location.href = 'Select?no=1'"><%-- +<%=list.get(i).getNo()%>+"'"> --%>
-	        <td><%=list.get(i).getName() %></td>
-	        <td><%=list.get(i).getEmail() %></td>
-	        <td><%=list.get(i).getRegDate() %></td>
+	      <tr class="cursor-pointer" onclick="location.href = 'Select';">
+	        <td>스티븐</td>
+	        <td>jobs@shellfolder.com</td>
+	        <td>2023-02-28</td>
 	      </tr>
-	     <%} %> 
+	      <tr class="cursor-pointer" onclick="location.href = 'Select';">
+	        <td>에브릴</td>
+	        <td>lavigne@shellfolder.com</td>
+	        <td>2023-02-27</td>
+	      </tr>
 	    </tbody>
 	  </table>
 	</div>

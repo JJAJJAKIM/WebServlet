@@ -5,6 +5,30 @@ public class DBTable {
 	private String email;
 	private String pwd;
 	private String gender;
+	private String regDate;
+	private String no;
+	
+	public DBTable() {
+		
+	}
+	
+	public DBTable(String name, String email, String pwd, String gender) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.pwd = pwd;
+		this.gender = gender;
+	}
+	
+	
+	public String getNo() {
+		return no;
+	}
+
+	public void setNo(String no) {
+		this.no = no;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -30,5 +54,20 @@ public class DBTable {
 		this.gender = gender;
 	}
 	
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
+	@Override
+	public String toString() {
+		return "DBTable [name=" + name + ", email=" + email + ", pwd=" + pwd + ", gender=" + gender + ", regDate="
+				+ regDate + ", no=" + no + "]";
+	}
+
+
 	
 }

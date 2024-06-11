@@ -1,3 +1,4 @@
+<%@page import="db.DBTable"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,11 +9,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<% 
-	String name = request.getAttribute("name").toString();
+<% 	
+	DBTable dto = new DBTable();
+	String name = dto.getName();
+  //	String name = request.getAttribute("name").toString();
 	String email = request.getAttribute("email").toString();
 	String pwd = request.getAttribute("pwd").toString();
-	int gender = Integer.parseInt(request.getAttribute("gender").toString());
+	String gender = request.getAttribute("gender").toString(); 
 %>
 	<div class="container mt-3">
 	  <h1 class="display-1 text-center">사용자 정보</h1>
@@ -24,15 +27,15 @@
 		  </div>
 		  <div class="mb-3 mt-3">
 		    <label for="email" class="form-label">이메일:</label>
-		    <input type="email" class="form-control" id="email" placeholder="이메일를 입력하세요." name="email" readonly="readonly" value="<%=email%>">
+		    <input type="email" class="form-control" id="email" placeholder="이메일를 입력하세요." name="email" readonly="readonly" value="<%=dto.getEmail()%>">
 		  </div>
 		  <div class="mb-3">
 		    <label for="pwd" class="form-label">비밀번호:</label>
-		    <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요." name="pwd" readonly="readonly" value="<%=pwd %>">
+		    <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요." name="pwd" readonly="readonly" value="<%=dto.getPwd() %>">
 			
 		  </div>
 			<div class="d-flex">
-		 	<% if(gender==1){ %> 	
+		 	<% if("1".equals(dto.getGender())){ %> 	
 			  <div class="p-2 flex-fill">
 			  	<div class="form-check">
 					<input type="radio" class="form-check-input" id="radio1" name="gender" value="1" checked>남성
@@ -66,10 +69,10 @@
 		  	<input type="submit" class="btn btn-primary" value="생성완료됨">
 		  </div>
 		  <div class="p-2 flex-fill d-grid">
-				<a href="List" class="btn btn-primary">삭제</a>
+				<a href="Listpage" class="btn btn-primary">삭제</a>
 		  </div>
 		  <div class="p-2 flex-fill d-grid">
-			<a href="List" class="btn btn-primary">취소</a>
+			<a href="Listpage" class="btn btn-primary">취소</a>
 		  </div>
 		</div>
 		</form>

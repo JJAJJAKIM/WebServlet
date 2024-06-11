@@ -1,3 +1,5 @@
+<%@page import="db.DBTable"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,17 +11,19 @@
 </head>
 <body>
 <% 
-	String name = request.getAttribute("name").toString();
-	String email = request.getAttribute("email").toString();
-	String pwd = request.getAttribute("pwd").toString();
-	String gender = request.getAttribute("gender").toString();
+	List<DBTable> list = (List<DBTable>)request.getAttribute("list");
+	int no = list.get(0).getNo();
+	String name = list.get(0).getName();
+	String email = list.get(0).getEmail();
+	String pwd = list.get(0).getPwd();
+	String gender = list.get(0).getGender();
 %>
 	<div class="container mt-3">
 	  <h1 class="display-1 text-center">사용자 정보</h1>
-		<form action="Update" method="post">
+		<form>
 		  <div class="mb-3 mt-3">
 		    <label for="name" class="form-label">이름:</label>
-		    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요." name="name" readonly="readonly" value="<%=name %>">
+		    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요." name="name" readonly="readonly" value="<%=name%>">
 		    
 		  </div>
 		  <div class="mb-3 mt-3">
@@ -28,11 +32,11 @@
 		  </div>
 		  <div class="mb-3">
 		    <label for="pwd" class="form-label">비밀번호:</label>
-		    <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요." name="pwd" readonly="readonly" value="<%=pwd %>">
+		    <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요." name="pwd" readonly="readonly" value="<%=pwd%>">
 			
 		  </div>
 			<div class="d-flex">
-		 	<% if("1".equals(gender)){ %> 	
+		  	<% if("1".equals(gender)) { %> 
 			  <div class="p-2 flex-fill">
 			  	<div class="form-check">
 					<input type="radio" class="form-check-input" id="radio1" name="gender" value="1" checked>남성
@@ -45,7 +49,7 @@
 					<label class="form-check-label" for="radio2"></label>
 				</div>
 			  </div>
-			<%} else { %>
+			<% } else { %>  
 			 <div class="p-2 flex-fill">
 			  	<div class="form-check">
 					<input type="radio" class="form-check-input" id="radio1" name="gender" value="1">남성
@@ -58,7 +62,7 @@
 					<label class="form-check-label" for="radio2"></label>
 				</div>
 			  </div>
-			 <%} %> 
+			  <% } %>   
 			</div>
 		<div class="d-flex">
 		  <div class="p-2 flex-fill d-grid">
@@ -66,10 +70,10 @@
 		  	<input type="submit" class="btn btn-primary" value="수정">
 		  </div>
 		  <div class="p-2 flex-fill d-grid">
-				<a href="List" class="btn btn-primary">삭제</a>
+				<a href="Listpage" class="btn btn-primary">삭제</a>
 		  </div>
 		  <div class="p-2 flex-fill d-grid">
-			<a href="List" class="btn btn-primary">취소</a>
+			<a href="Listpage" class="btn btn-primary">취소</a>
 		  </div>
 		</div>
 		</form>

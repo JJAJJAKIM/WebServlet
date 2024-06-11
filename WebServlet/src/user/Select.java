@@ -7,30 +7,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.servlet.Utils;
 
+import java.util.List;
+import db.Connec;
 import db.DBTable;
 
 @WebServlet("/Select")
 public class Select extends HttpServlet {
-	
+
 	private final String page = "user/Select.jsp";
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DBTable dto = new DBTable();
+	 
+	protected void doGet(HttpServletRequest request, HttpServletResponse
+	  response) throws ServletException, IOException {
+		
+		String no = request.getParameter("no");
+		
+		SqlSession sql = Connec.getpool().openSession();
+		List<DBTable> list = sql.selectOne("user.readOne", no);
+		System.out.println(list);
+	 
+//	 Utils.print(request, response, page);
+	 
+	 }
+	
 
-		
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String pwd = request.getParameter("pwd");
-		String gender = request.getParameter("gender");
-		
-		request.setAttribute("name", name );
-		request.setAttribute("email", email);
-		request.setAttribute("pwd", pwd);
-		request.setAttribute("gender", gender);
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		SqlSession sql = Connec.getpool().openSession();
+		List<DBTable> list = sql.selectList("user.read");
+
+		request.setAttribute("list", list);
+
 		Utils.print(request, response, page);
+
 	}
 
 }
