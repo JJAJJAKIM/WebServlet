@@ -17,13 +17,9 @@
 	<div class="container mt-3">
 	  <h1 class="display-1 text-center">사용자 정보</h1>
 		<form action="Update">
-		  <div class="mb-3 mt-3" Style="display:none">
-		  	<input type="text" class="form-control" id="no" name="no" value="<%=dto.getNo()%>">
-		  </div>
 		  <div class="mb-3 mt-3">
 		    <label for="name" class="form-label">이름:</label>
 		    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요." name="name" readonly="readonly" value="<%=dto.getName()%>">
-		    
 		  </div>
 		  <div class="mb-3 mt-3">
 		    <label for="email" class="form-label">이메일:</label>

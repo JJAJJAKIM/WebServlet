@@ -22,12 +22,7 @@ public class Update extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String no = request.getParameter("no");
 		
-		SqlSession sql = Connec.getpool().openSession();
-		DBTable dto = sql.selectOne("user.readOne", no);
-		
-		request.setAttribute("user", dto);
 				
 		Utils.print(request, response, page);
 	}

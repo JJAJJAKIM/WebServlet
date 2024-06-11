@@ -15,7 +15,12 @@
 <body>
 
 <% 
-	List<DBTable> list = (List<DBTable>)request.getAttribute("list");
+	Object obj = request.getAttribute("list");
+	List<DBTable> list = null;
+if(obj != null){
+	list = (List<DBTable>)obj;
+	
+}
 	
 %>
 
@@ -33,14 +38,11 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	    <% for(int i = 0; i < list.size(); i++ ) {
-	    	String no = list.get(i).getNo();
-	    	%>
-
-	      <tr class="cursor-pointer" onclick="location.href ='Select?no=<%=no%>'"> 
-	        <td><%=list.get(i).getName() %></td>
-	        <td><%=list.get(i).getEmail() %></td>
-	        <td><%=list.get(i).getRegDate() %></td>
+	    <% for( DBTable dto : list ) {%>
+	      <tr class="cursor-pointer" onclick="location.href ='Select?no=<%=dto.getNo()%>';"> 
+	        <td><%=dto.getName() %></td>
+	        <td><%=dto.getEmail() %></td>
+	        <td><%=dto.getRegDate() %></td>
 	      </tr>
 	     <%} %> 
 	    </tbody>

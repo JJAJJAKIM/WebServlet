@@ -1,34 +1,14 @@
 package db;
 
+import java.sql.Time;
+
 public class DBTable {
 	private String name;
 	private String email;
 	private String pwd;
 	private String gender;
-	private String regDate;
-	private String no;
-	
-	public DBTable() {
-		
-	}
-	
-	public DBTable(String name, String email, String pwd, String gender) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.pwd = pwd;
-		this.gender = gender;
-	}
-	
-	
-	public String getNo() {
-		return no;
-	}
-
-	public void setNo(String no) {
-		this.no = no;
-	}
-
+	private Time regDate;
+	private int no;
 	public String getName() {
 		return name;
 	}
@@ -53,21 +33,23 @@ public class DBTable {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	public String getRegDate() {
+	public Time getRegDate() {
 		return regDate;
 	}
-
-	public void setRegDate(String regDate) {
+	public void setRegDate(Time regDate) {
 		this.regDate = regDate;
 	}
-
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	@Override
 	public String toString() {
 		return "DBTable [name=" + name + ", email=" + email + ", pwd=" + pwd + ", gender=" + gender + ", regDate="
 				+ regDate + ", no=" + no + "]";
 	}
-
-
+	
 	
 }
